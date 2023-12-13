@@ -2,6 +2,27 @@
 
 {% block content %}
 
-<h1>Todo Tasks</h1>
+<h1>Contact List</h1>
+<a href="{% url 'contact_create' %}">Add Contact</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <!-- Add other fields as needed -->
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contact_list %}
+    <tr>
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.email }}</td>
+      <!-- Display other fields as needed -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock content %}
