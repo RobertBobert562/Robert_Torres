@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "C:\Users\Robert\Desktop\MSIS Fall 2023\IS640\Robert_Torres\Robert_Torres\Robert_Torres\templates\base.html" %}
 
 {% block content %}
 
 <h1>Contact List</h1>
-<a href="{% url 'contact_create' %}">Add Contact</a>
+<a href="{% url 'contact_form' %}">Add Contact</a>
 
 <table class="table table-striped">
   <thead>
@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for contact in contact_list %}
+    {% for contact in contacts %}
     <tr>
       <td>{{ contact.name }}</td>
       <td>{{ contact.email }}</td>

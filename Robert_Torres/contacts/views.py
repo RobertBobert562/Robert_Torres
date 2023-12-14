@@ -1,20 +1,21 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from .models import Contact
+from .forms import ContactForm
 
 # contacts/views.py
 def start_page(request):
     return render(request, 'contacts/start_page.html', {'contacts': []})
 
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
-from .models import Contact
-from .forms import ContactForm
-
 class ContactCreateView(CreateView):
     model = Contact
-    form_class = ContactForm
-    success_url = reverse_lazy("contact_list")
+    form_class = ContactForm  # Replace with your actual form class
+    template_name = "Robert_Torres\contacts\templates\contacts\contact_form.html"  # Replace with your actual template path
+    success_url = ""  # Replace with the URL you want to redirect to after a successful form submission
 
 class ContactListView(ListView):
     model = Contact
+    template_name = "Robert_Torres\contacts\templates\contacts\contact_list.html"
+    context_object_name = "contacts"
