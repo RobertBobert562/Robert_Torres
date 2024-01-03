@@ -7,7 +7,7 @@ from .forms import ContactForm
 
 # contacts/views.py
 def start_page(request):
-    return render(request, 'contacts/start_page.html', {'contacts': []})
+    return render(request, 'contact_list.html')
 
 class ContactCreateView(CreateView):
     model = Contact

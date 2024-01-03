@@ -1,9 +1,9 @@
-{% extends "C:\Users\Robert\Desktop\MSIS Fall 2023\IS640\Robert_Torres\Robert_Torres\Robert_Torres\templates\base.html" %}
+{% extends "C:\Users\Robert\Desktop\MSIS Fall 2023\IS640\Robert_Torres\Robert_Torres\templates\base.html" %}
 
 {% block content %}
 
 <h1>Contact List</h1>
-<a href="{% url 'contact_form' %}">Add Contact</a>
+<a href="{% url 'contact_create' %}">Add Contact</a>
 
 <table class="table table-striped">
   <thead>
@@ -26,3 +26,5 @@
 </table>
 
 {% endblock content %}
+
+
