@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Contact List</h1>
-<a href="{% url 'contact_create' %}">Add Contact</a>
+<a href="{% url 'contacts:contact_create' %}">Add Contact</a>
 
 <table class="table table-striped">
   <thead>
@@ -19,11 +19,16 @@
     <tr>
       <td>{{ contact.name }}</td>
       <td>{{ contact.email }}</td>
+      
       <!-- Display other fields as needed -->
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+<p style="position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 20px;">
+  &copy; Robert Torres
+</p>
 
 {% endblock content %}
 

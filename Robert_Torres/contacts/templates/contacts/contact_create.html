@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Create a New Contact</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  {% if form.errors %}
+    <div class="error">
+      <h3>Error:</h3>
+      <ul>
+        {% for field, errors in form.errors.items %}
+          <li>{{ field }}: {{ errors.0 }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

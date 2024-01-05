@@ -12,8 +12,12 @@ def start_page(request):
 class ContactCreateView(CreateView):
     model = Contact
     form_class = ContactForm  # Replace with your actual form class
-    template_name = "Robert_Torres\contacts\templates\contacts\contact_form.html"  # Replace with your actual template path
-    success_url = ""  # Replace with the URL you want to redirect to after a successful form submission
+    template_name = "contacts/contact_create.html"  # Replace with your actual template path
+    success_url = reverse_lazy('contact_list')  # Replace with the URL you want to redirect to after a successful form submission
+
+    def form_valid(self, form):
+        # Additional validation logic can be added here
+        return super().form_valid(form)
 
 class ContactListView(ListView):
     model = Contact
