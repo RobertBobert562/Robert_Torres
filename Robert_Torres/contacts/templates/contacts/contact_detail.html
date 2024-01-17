@@ -1,0 +1,21 @@
+<!-- contacts/contact_detail.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>Contact Details</h1>
+
+  <div>
+    <strong>Name:</strong> {{ contact.name }}<br>
+    <strong>Email:</strong> {{ contact.email }}<br>
+    <strong>Notes:</strong> {{ contact.notes }}<br>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <a href="{% url 'contacts:contact_list' %}">Home</a>
+    <a href="{% url 'contacts:contact_edit' pk=contact.pk %}">Edit</a>
+    <a href="{% url 'contacts:contact_confirm_delete' pk=contact.pk %}">Delete</a>
+  </div>
+
+{% endblock %}

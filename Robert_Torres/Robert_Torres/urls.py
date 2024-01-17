@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from contacts.views import ContactListView
 
 urlpatterns = [
     
     path('admin/', admin.site.urls),
-    path('', include('contacts.urls')),  # Adjust to your actual view
+    path('', ContactListView.as_view(), name='contact_list'),  # Set ContactListView as the home page
+    path('contacts/', include('contacts.urls')),  # Adjust to your actual view
 ]
 

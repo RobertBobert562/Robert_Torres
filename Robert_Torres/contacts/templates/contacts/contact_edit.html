@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Create a New Contact</h1>
-  <form method="post" action="{% url 'contacts:contact_create' %}">
+  <h1>Edit Contact</h1>
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+    <button type="submit">Save Changes</button>
+  </form>
 
   {% if form.errors %}
     <div class="error">
@@ -18,4 +18,6 @@
       </ul>
     </div>
   {% endif %}
+
+  <a href="{% url 'contacts:contact_list' %}">Cancel</a>
 {% endblock %}

@@ -1,25 +1,38 @@
-from django.shortcuts import render
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Contact
 from .forms import ContactForm
 
 # contacts/views.py
-def start_page(request):
-    return render(request, 'contact_list.html')
 
 class ContactCreateView(CreateView):
     model = Contact
-    form_class = ContactForm  # Replace with your actual form class
-    template_name = "contacts/contact_create.html"  # Replace with your actual template path
-    success_url = reverse_lazy('contact_list')  # Replace with the URL you want to redirect to after a successful form submission
+    form_class = ContactForm
+    template_name = "contacts/contact_create.html"
+    success_url = '/contacts/contact_list/'
 
     def form_valid(self, form):
-        # Additional validation logic can be added here
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        return redirect(self.success_url)
 
 class ContactListView(ListView):
     model = Contact
-    template_name = "Robert_Torres\contacts\templates\contacts\contact_list.html"
+    template_name = "contacts/contact_list.html"
     context_object_name = "contacts"
+
+class ContactEditView(UpdateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = "contacts/contact_edit.html" 
+    success_url = '/contacts/contact_list/'
+
+class ContactDeleteView(DeleteView):
+    model = Contact
+    template_name = "contacts/contact_confirm_delete.html" 
+    success_url = '/contacts/contact_list/'  
+
+class ContactDetailView(DetailView):
+    model = Contact
+    template_name = "contacts/contact_detail.html"
+    context_object_name = "contact"
